@@ -7,6 +7,22 @@ import express from 'express';
 /* Tạo ra đối tượng server */
 const server = express();
 
+/* Setup TypeORMS */
+import {myDataSource} from './typeorms/app-data-source'
+
+try {
+    myDataSource
+    .initialize()
+    .then(() => {
+        console.log("TypeORMS thành công!")
+    })
+    .catch((err) => {
+        console.error("TypeORMS thất bại!")
+    })
+}catch(err) {
+    console.log("Lỗi cú pháp!")
+}
+
 /* Version api setup */
 import routeApi from './routes'
 server.use('/api', routeApi)
