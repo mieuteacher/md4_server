@@ -7,8 +7,12 @@ import express from 'express';
 /* Tạo ra đối tượng server */
 const server = express();
 
-server.use('/test', (req, res) => {
-    return res.send("OK nhé!")
+/* Version api setup */
+import routeApi from './route'
+server.use('/api', routeApi)
+
+server.use('/asdbasd', (req, res) => {
+    
 })
 
 /* Đẩy server ra port trên máy */
