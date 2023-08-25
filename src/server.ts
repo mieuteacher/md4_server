@@ -8,12 +8,8 @@ import express from 'express';
 const server = express();
 
 /* Version api setup */
-import routeApi from './route'
+import routeApi from './routes'
 server.use('/api', routeApi)
-
-server.use('/asdbasd', (req, res) => {
-    
-})
 
 /* Đẩy server ra port trên máy */
 server.listen(process.env.SERVER_PORT, () => {
