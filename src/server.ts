@@ -23,6 +23,27 @@ try {
     console.log("Lỗi cú pháp!")
 }
 
+/* Setup Cors */
+import cors from 'cors';
+server.use(cors());
+
+/* Setup Body Parser */
+import bodyParser from 'body-parser';
+server.use(bodyParser.json())
+
+import axios from 'axios';
+server.use("/authen-google", async (req, res) => {
+    try {
+        let result = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.FB_API_KEY}`, {
+            idToken: req.body.token
+        })
+        console.log("result", result.data)
+        res.json(result.data)
+    }catch(err) {
+        console.log("err", err)
+    }
+})
+
 /* Version api setup */
 import routeApi from './routes'
 server.use('/api', routeApi)
