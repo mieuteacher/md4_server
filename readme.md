@@ -23,3 +23,7 @@
 
 "db": "prisma db push",
 "client": "prisma generate"
+
+## Mail
+
+npm i nodemailer @types/nodemailer 
