@@ -1,10 +1,11 @@
 import Mailgen from 'mailgen';
-
+import Text from '../../../text'
 interface MailBody {
     productName: string;
     productWebUrl: string;
     receiverName: string;
     confirmLink: string;
+    language: string;
 }
 
 function genEmailString(mailBody: MailBody) {
@@ -18,19 +19,19 @@ function genEmailString(mailBody: MailBody) {
     
     let email = {
         body: {
-            greeting: 'Xin chào',
-            signature: 'Chúc bạn một ngày tốt lành',
+            greeting: Text(mailBody.language).hello,
+            signature:  Text(mailBody.language).signature,
             name: mailBody.receiverName,
-            intro: `Cảm ơn bạn đã tham gia cộng đồng ${mailBody.productName}! Chúng tôi rất vui vì điều đó!`,
+            intro: Text(mailBody.language).intro,
             action: {
-                instructions: `Để xác thực email cho tài khoản ${mailBody.productName}, vui lòng bấm vào liên kết bên dưới:`,
+                instructions: `${Text(mailBody.language).instructionOne} ${mailBody.productName}, ${Text(mailBody.language).instructionTwo}`,
                 button: {
                     color: '#22BC66',
-                    text: 'Xác thực email',
+                    text: Text(mailBody.language).mailBtnText,
                     link: mailBody.confirmLink
                 }
             },
-            outro: 'Cần giúp hoặc có câu hỏi? Chỉ cần trả lời email này, chúng tôi rất sẵn lòng trợ giúp.'
+            outro: `${Text(mailBody.language).outro}.`
         }
     };
     

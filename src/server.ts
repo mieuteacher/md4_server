@@ -20,16 +20,16 @@ import MailServer, {templates} from './services/mail'
 
 server.use("/test", async (req, res) => {
     let resuslt = await MailServer.sendMail({
-        to: "92thanhtrung@gmail.com, mieuteacher@gmail.com, taido2452@gmail.com, tranduytuananh203@gmail.com",
-        subject: "Thử Template",
+        to: "mieuteacher@gmail.com",
+        subject: "Xác thực email",
         html: templates.emailConfirm({
             productName: 'Miêu Store',
             productWebUrl: 'https://pokemoninmylife.com/',
             receiverName: 'Người Dùng Mới',
-            confirmLink: 'abc.xyz'
+            confirmLink: 'abc.xyz',
+            language: String(req.headers.language)
         })
     })
-
     console.log("resuslt", resuslt)
 })
 /* Version api setup */
