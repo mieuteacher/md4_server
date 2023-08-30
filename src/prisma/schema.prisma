@@ -9,21 +9,18 @@ generator client {
 
 model users {
    id String @id @default(auto()) @map("_id") @db.ObjectId
-   userName String
    email String @unique
+   emailConfirm Boolean @default(false)
+   userName String @unique
    password String
-   avatar  String
+   firstName String
+   lastName String
+   avatar   String @default("https://www.slotcharter.net/wp-content/uploads/2020/02/no-avatar.png")
    isActive Boolean @default(true)
    createAt DateTime @default(now())
    updateAt DateTime @default(now())
-   address Address[]
+   address  Address[]
 }
-
-model tests {
-   id String @id @default(auto()) @map("_id") @db.ObjectId
-   title String
-}
-
 type Address {
     provinceId Int
     provinceName String

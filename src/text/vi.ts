@@ -8,7 +8,12 @@ const data:TextType = {
     instructionOne: "Để xác thực email cho tài khoản ",
     instructionTwo: " vui lòng bấm vào liên kết bên dưới:",
     mailBtnText: "Xác thực email",
-    outro: "Cần giúp hoặc có câu hỏi? Chỉ cần trả lời email này, chúng tôi rất sẵn lòng trợ giúp"
+    outro: "Cần giúp hoặc có câu hỏi? Chỉ cần trả lời email này, chúng tôi rất sẵn lòng trợ giúp",
+    modelErr: "Lỗi model",
+    controllerErr: "Lỗi controller",
+    userNameDuplicate: "Tên đăng nhập đã tồn tại",
+    emailDuplicate: "Email đã tồn tại",
+    registerSuccess: "Đăng ký thành công"
 }
 
 export default data

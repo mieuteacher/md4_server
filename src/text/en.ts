@@ -6,7 +6,13 @@ const data = {
     instructionOne: "To verify the email for the account ",
     instructionTwo: " please click on the link below:",
     mailBtnText: "Confirm email",
-    outro: "Need help or have questions? Just reply to this email, we'll be happy to help"
+    outro: "Need help or have questions? Just reply to this email, we'll be happy to help",
+    /* Api */
+    modelErr: "Model err",
+    controllerErr: "Controller err",
+    userNameDuplicate: "Username already exists",
+    emailDuplicate: "Email already exists",
+    registerSuccess: "Register Successfully"
 }
 export type TextType = typeof data;
 export default data
