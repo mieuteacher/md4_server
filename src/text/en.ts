@@ -12,7 +12,9 @@ const data = {
     controllerErr: "Controller err",
     userNameDuplicate: "Username already exists",
     emailDuplicate: "Email already exists",
-    registerSuccess: "Register Successfully"
+    registerSuccess: "Register Successfully",
+    /* Middleware */
+    ipAcceptDenine: "IP Address Not Accept"
 }
 export type TextType = typeof data;
 export default data

@@ -16,25 +16,10 @@ server.use(cors());
 import bodyParser from 'body-parser';
 server.use(bodyParser.json())
 
-import MailServer, {templates} from './services/mail'
-
-server.use("/test", async (req, res) => {
-    let resuslt = await MailServer.sendMail({
-        to: "mieuteacher@gmail.com",
-        subject: "Xác thực email",
-        html: templates.emailConfirm({
-            productName: 'Miêu Store',
-            productWebUrl: 'https://pokemoninmylife.com/',
-            receiverName: 'Người Dùng Mới',
-            confirmLink: 'abc.xyz',
-            language: String(req.headers.language)
-        })
-    })
-    console.log("resuslt", resuslt)
-})
 /* Version api setup */
-import routeApi from './routes'
-server.use('/api', routeApi)
+import routeApi from './routes';
+import guard from './middlewares/guard';
+server.use('/api', guard.ipAuthen, routeApi);
 
 /* Đẩy server ra port trên máy */
 server.listen(process.env.SERVER_PORT, () => {

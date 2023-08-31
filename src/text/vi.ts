@@ -13,7 +13,8 @@ const data:TextType = {
     controllerErr: "Lỗi controller",
     userNameDuplicate: "Tên đăng nhập đã tồn tại",
     emailDuplicate: "Email đã tồn tại",
-    registerSuccess: "Đăng ký thành công"
+    registerSuccess: "Đăng ký thành công",
+    ipAcceptDenine: "Địa chỉ IP không được chấp nhận"
 }
 
 export default data

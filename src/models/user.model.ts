@@ -23,6 +23,18 @@ export interface NewUser {
     address?: Address[]
 }
 
+export interface UpdateUser {
+    email?: string,
+    emailConfirm?: boolean,
+    password?: string,
+    firstName?: string,
+    lastName?: string,
+    avatar?: string,
+    createAt?: Date,
+    updateAt: Date,
+    address?: Address[],
+    isActive?: boolean
+}
 interface PrismaErr {
     code?: string,
     meta?: {
@@ -55,6 +67,59 @@ export default {
                 default:
             }
 
+            return {
+                status: false,
+                data: null,
+                message
+            }
+        }
+    },
+    update: async function(userId: string, data: UpdateUser) {
+        try {
+            let user = await prisma.users.update({
+                where: {
+                    id: userId
+                },
+                data
+            })
+
+            return {
+                status: true,
+                data: user,
+                message: "Update thành công!"
+            }
+        }catch(err) {
+            let message: string = "modelErr";
+
+            switch((err as PrismaErr).meta?.target) {
+                case "users_email_key":
+                    message = "emailDuplicate"
+                    break
+                default:
+            }
+
+            return {
+                status: false,
+                data: null,
+                message
+            }
+        }
+    },
+    inforById: async function(userId: string) {
+        try {
+            let user = await prisma.users.findUnique({
+                where: {
+                    id: userId
+                }
+            })
+
+            return {
+                status: true,
+                data: user,
+                message: "Lấy thông tin thành công!"
+            }
+        }catch(err) {
+            let message: string = "modelErr";
             return {
                 status: false,
                 data: null,
