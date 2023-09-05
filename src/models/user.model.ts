@@ -126,5 +126,27 @@ export default {
                 message
             }
         }
+    },
+    inforByUserName: async function(userName: string) {
+        try {
+            let user = await prisma.users.findUnique({
+                where: {
+                    userName
+                }
+            })
+
+            return {
+                status: true,
+                data: user,
+                message: "Lấy thông tin thành công!"
+            }
+        }catch(err) {
+            let message: string = "modelErr";
+            return {
+                status: false,
+                data: null,
+                message
+            }
+        }
     }
 }
