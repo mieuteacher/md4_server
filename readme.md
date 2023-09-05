@@ -26,4 +26,4 @@
 
 ## Mail
 
-npm i nodemailer @types/nodemailer 
+npm i nodemailer @types/nodemailer
