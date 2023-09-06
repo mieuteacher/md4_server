@@ -26,6 +26,7 @@ export default {
                 data: product
             }
         }catch(err) {
+            console.log("lỗi model", err)
             return {
                 status: false,
                 message: "Lỗi model",
