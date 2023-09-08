@@ -12,6 +12,8 @@ const storage = multer.diskStorage({
     }
   })
   
-  const upload = multer({ storage: storage })
+const upload = multer({ storage: storage })
 Router.post('/',upload.array('imgs'), productController.create)
+Router.get('/:productId', productController.findById)
+Router.get('/', productController.findMany)
 export default Router;
