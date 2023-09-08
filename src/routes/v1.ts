@@ -13,4 +13,6 @@ Router.use('/categories', categoryApi)
 import productApi from './apis/product.api'
 Router.use('/products', productApi)
 
+import purchaseApi from './apis/purchase.api'
+Router.use('/purchase', purchaseApi)
 export default Router;
