@@ -16,6 +16,7 @@ export default {
         }
     },
     findGuestReceipt: async function(req: Request, res: Response) {
+        console.log("req", req.body)
         try {
             let modelRes = await purchaseModel.findGuestReceipt(String(req.body.guestEmail));
             if(req.body.otp) {
@@ -25,8 +26,10 @@ export default {
                     return res.status(modelRes.status ? 200 : 213).json(modelRes);
                 }
             }else {
+                console.log("chưa có otp")
                 /* chưa có otp */
                 if(modelRes.status && modelRes.data != null) {
+                    console.log("chưa có 222", modelRes.data)
                     if(modelRes.data?.length > 0) {
                         let otpObj = otps.createOtp(String(req.body.guestEmail), 5);
                         if(otpObj) {
@@ -40,6 +43,10 @@ export default {
                                 message: `${mailSent ? "OTP đã gửi tới email" : "Lỗi dịch vụ"}`
                             });
                         }
+                    }else {
+                        return res.status(213).json({
+                            message: "Quý khách chưa phát sinh giao dịch!"
+                        });
                     }
                 }
             }
