@@ -57,5 +57,28 @@ export default {
                 data: null
             }
         }
+    },
+    findGuestReceipt: async function(guestEmail: string) {
+        try {
+            let receipts = await prisma.guestReceipts.findMany({
+                where: {
+                    email: guestEmail
+                },
+                include: {
+                    guestReceiptDetail: true
+                }
+            })
+            return {
+                status: true,
+                message: "Lấy danh sách order thành công! ",
+                data: receipts
+            }
+        }catch(err) {
+            return {
+                status: false,
+                message: "Lỗi model!",
+                data: null
+            }
+        }
     }
 }
